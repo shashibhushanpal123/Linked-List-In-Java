@@ -1,0 +1,75 @@
+//Liner Searching Via Link List
+// Time Comp O(n)
+//Space Comp O(1)
+
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int data, Node next)
+  {
+      this.data=data;
+      this.next=next;
+  }
+}
+
+public class Main
+{
+    static Scanner sc=new Scanner(System.in);
+    
+    //Target Element to find
+    static int target=sc.nextInt();
+	public static void main(String[] args) {
+	
+		//Number of Elements
+		int d=sc.nextInt();
+		
+		//Empty List
+		if(d<=0)
+		{
+		    System.out.println("Empty List");
+		    return;
+		}
+		
+		//Making First node initially 
+		Node first=new Node(sc.nextInt(),null);
+		Node head=first;
+		
+		//If list size is greater than 1
+		if(d>1)
+		
+		//Making Rest nodes via Loop 
+		for(int q=1;q<d;q++)
+		{
+		    Node n=new Node(sc.nextInt(),null);
+		    first.next=n;
+		    first=first.next;
+		    
+		}
+		int a=findelement(head);
+		if(a==-1)
+		System.out.println("Element not found");
+		else
+		System.out.println("Element found at Index "+a);
+	}
+	
+	static int findelement(Node head)
+	{
+	    int count=1;
+	    while(head!=null)
+	    {
+	        if(head.data==target)
+	        return count;
+	        
+	        else
+	        {
+	        ++count;
+	        head=head.next;
+	        if(head==null)
+	        return -1;
+	        }
+	    }
+	    return count;
+	}
+}
